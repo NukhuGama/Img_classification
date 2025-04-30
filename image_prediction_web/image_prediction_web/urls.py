@@ -23,6 +23,11 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.predict_image, name='predict_image'),
+    path('', views.index, name='index'), 
+    path('', views.about, name='about'),
+    path('', views.login, name='login'),
+    
+    
 ]
 
 

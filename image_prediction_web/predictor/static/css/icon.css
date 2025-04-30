@@ -1,0 +1,214 @@
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #2ecc71;
+    --accent-color: #9b59b6;
+    --dark-color: #2c3e50;
+    --light-color: #ecf0f1;
+    --gray-color: #95a5a6;
+  }
+  
+  body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f9fa;
+    color: var(--dark-color);
+  }
+  
+  .navbar {
+    background-color: #fff;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    padding: 15px 0;
+  }
+  
+  .navbar-brand span {
+    font-weight: 700;
+    font-size: 24px;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding: 5px 0;
+  }
+  
+  .nav-link {
+    font-weight: 500;
+    color: var(--dark-color) !important;
+    margin: 0 10px;
+    transition: all 0.3s ease;
+  }
+  
+  .nav-link:hover, .nav-link.active {
+    color: var(--primary-color) !important;
+  }
+  
+  .quote_btn-container a {
+    background-color: var(--primary-color);
+    color: white !important;
+    border-radius: 30px;
+    padding: 8px 20px;
+    display: inline-flex;
+    align-items: center;
+    transition: all 0.3s ease;
+  }
+  
+  .quote_btn-container a:hover {
+    background-color: var(--accent-color);
+    text-decoration: none;
+    transform: translateY(-2px);
+  }
+  
+  .quote_btn-container span {
+    margin-right: 10px;
+  }
+  
+  main.container {
+    max-width: 1000px;
+  }
+  
+  .card {
+    border: none;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+  
+  h2 {
+    font-weight: 600;
+    color: var(--dark-color);
+  }
+  
+  .upload-container {
+    background-color: #f8f9fa;
+    border: 2px dashed #ccc;
+    border-radius: 10px;
+    padding: 40px 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .upload-container:hover {
+    border-color: var(--primary-color);
+    background-color: #f1f7fb;
+  }
+  
+  .upload-icon {
+    font-size: 48px;
+    color: var(--gray-color);
+    margin-bottom: 15px;
+  }
+  
+  .custom-file-input {
+    position: absolute;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+  }
+  
+  .btn-predict {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border: none;
+    border-radius: 30px;
+    padding: 10px 30px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+  
+  .btn-predict:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(46, 204, 113, 0.3);
+  }
+  
+  .btn-clear {
+    border-radius: 30px;
+    padding: 10px 30px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+  
+  .btn-clear:hover {
+    transform: translateY(-3px);
+  }
+  
+  .image-preview img {
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    max-height: 300px;
+    object-fit: contain;
+  }
+  
+  .result {
+    background: linear-gradient(135deg, #f6f9fd, #f1f7fb);
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  }
+  
+  .confidence-bar {
+    height: 10px;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    margin: 10px 0;
+    overflow: hidden;
+  }
+  
+  .confidence-level {
+    height: 100%;
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    border-radius: 5px;
+  }
+  
+  .footer {
+    background-color: var(--dark-color);
+    color: white;
+    padding: 20px 0;
+  }
+  
+  .feature-card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px 0;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+  }
+  
+  .feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  }
+  
+  .feature-icon {
+    font-size: 36px;
+    margin-bottom: 15px;
+    color: var(--primary-color);
+  }
+  
+  .processing-loader {
+    display: none;
+    margin: 20px auto;
+  }
+  
+  .loader-spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-left-color: var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+  
+  @media (max-width: 768px) {
+    .navbar-brand span {
+      font-size: 20px;
+    }
+    
+    .card {
+      padding: 20px !important;
+    }
+  }

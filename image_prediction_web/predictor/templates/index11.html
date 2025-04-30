@@ -1,0 +1,40 @@
+<!-- File: predictor/templates/index.html -->
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Prediction - Caltech101</title>
+    <!-- <link rel="stylesheet" href="{% static 'css/style.css' %}"> -->
+    <link rel="stylesheet" href="{% static 'css/style_original.css' %}">
+</head>
+<body>
+    <div class="card">
+        <h1>N-Digital - Image Classifier</h1>
+        <p class="description">Upload any image and get instant predictions from a model trained on the Caltech101 dataset.</p>
+
+        <form method="post" enctype="multipart/form-data" id="prediction-form">
+            {% csrf_token %}
+            <input type="file" id="image-input" name="image" accept="image/*" onchange="previewImage(event)" required>
+            <div>
+                <button type="submit">Predict</button>
+                <button type="button" class="clear-btn" id="clear-button" onclick="clearForm()">Clear</button>
+            </div>
+        </form>
+
+        <div class="image-preview" id="preview-wrapper" style="text-align: center;">
+            <img id="preview" src="" alt="Preview Image" style="display: none; margin: 20px auto;">
+        </div>
+        
+
+        {% if class_name %}
+        <div class="result" id="prediction-results">
+            <h3>Prediction: {{ class_name }}</h3>
+            <h4>Confidence: {{ confidence }}%</h4>
+            <img src="{{ image_url }}" alt="Predicted Image" class="image-preview">
+        </div>
+        {% endif %}
+    </div>
+    
+    <script src="{% static 'js/scripts.js' %}"></script>
+</body>
+</html>

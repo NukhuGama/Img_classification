@@ -14,6 +14,18 @@ model = tf.keras.models.load_model('ml_models/my_model.h5')
 with open('ml_models/labels.txt', 'r') as f:
     labels = [line.strip() for line in f.readlines()]
 
+def login(request):
+    return render(request, 'index.html')
+
+
+
+def index(request):
+    return render(request, 'index.html')
+
+def about(request):
+    return render(request, 'index11.html')
+
+
 def preprocess_image(img_file):
     # Open and convert image to RGB (PIL)
     image = Image.open(img_file).convert('RGB')
@@ -40,10 +52,12 @@ def predict(img_tensor):
     confidence = float(predictions[0][class_id])
     return labels[class_id], confidence
 
+
 def predict_image(request):
     context = {}
     if request.method == 'POST' and 'image' in request.FILES:
         img_file = request.FILES['image']
+        print(f"Received file: {img_file.name}")
 
         # Save uploaded image to media folder
         fs = FileSystemStorage()
@@ -55,6 +69,7 @@ def predict_image(request):
 
         # Predict
         class_name, confidence = predict(input_tensor)
+        print(f"Prediction: {class_name}, Confidence: {confidence}")
 
         # Pass to template
         context = {
@@ -64,3 +79,4 @@ def predict_image(request):
         }
 
     return render(request, 'index.html', context)
+

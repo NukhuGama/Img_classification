@@ -1,39 +1,190 @@
-<!-- File: predictor/templates/index.html -->
 {% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>Image Prediction - Caltech101</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <!-- Basic Meta -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <!-- SEO -->
+  <meta name="keywords" content="image classification, AI, machine learning, digital" />
+  <meta name="description" content="N-Digital Image Classifier - Upload your image and get instant AI-powered predictions." />
+  <meta name="author" content="N-Digital" />
+  <link rel="icon" href="{% static 'images/fevicon.png' %}" type="image/gif" />
+
+  <title>N-Digital - AI Image Classifier</title>
+
+  <!-- Fonts and Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/style_original.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/icon.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/responsive.css' %}" />
+  
+
 </head>
+
 <body>
-    <div class="card">
-        <h1>N-Digital - Image Classifier</h1>
-        <p class="description">Upload any image and get instant predictions from a model trained on the Caltech101 dataset.</p>
+  <div class="hero_area">
 
-        <form method="post" enctype="multipart/form-data" id="prediction-form">
-            {% csrf_token %}
-            <input type="file" id="image-input" name="image" accept="image/*" onchange="previewImage(event)" required>
-            <div>
-                <button type="submit">Predict</button>
-                <button type="button" class="clear-btn" id="clear-button" onclick="clearForm()">Clear</button>
+    <!-- Header Section -->
+    <header class="header_section px-0">
+      <nav class="navbar navbar-expand-lg custom_nav-container">
+        <div class="container">
+          <a class="navbar-brand" href="{% url 'index' %}">
+            <span>N-Digital</span>
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            <i class="fas fa-bars"></i>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mx-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="{% url 'index' %}">Home <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'about' %}">About</a>
+              </li>
+            </ul>
+            <div class="quote_btn-container">
+              <a href="{% url 'login' %}">
+                <span>Login</span>
+                <i class="fas fa-user-circle"></i>
+              </a>
             </div>
-        </form>
-
-        <div class="image-preview" id="preview-wrapper" style="text-align: center;">
-            <img id="preview" src="" alt="Preview Image" style="display: none; margin: 20px auto;">
+          </div>
         </div>
-        
+      </nav>
+    </header>
 
-        {% if class_name %}
-        <div class="result" id="prediction-results">
-            <h3>Prediction: {{ class_name }}</h3>
-            <h4>Confidence: {{ confidence }}%</h4>
-            <img src="{{ image_url }}" alt="Predicted Image" class="image-preview">
+    <!-- Hero Section -->
+    <section class="bg-light py-4">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-6">
+            <h1 class="display-4 font-weight-bold">AI Image Classification</h1>
+            <p class="lead text-muted">Upload any image and our advanced AI will instantly tell you what it contains.</p>
+            <p>Powered by machine learning algorithms trained on the Caltech101 dataset.</p>
+          </div>
+          <div class="col-lg-6">
+            <img src="{% static 'images/hero-image.png' %}" alt="AI Image Classification" class="img-fluid" onerror="this.src='https://via.placeholder.com/600x400?text=AI+Image+Classification'; this.onerror='';">
+          </div>
         </div>
-        {% endif %}
-    </div>
-    
-    <script src="{% static 'js/scripts.js' %}"></script>
+      </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container my-5">
+      <div class="card p-5 shadow">
+
+        <div class="card">
+          <h1>N-Digital - Image Classifier</h1>
+          <p class="description">Upload any image and get instant predictions from a model trained on the Caltech101 dataset.</p>
+  
+          <form method="post" enctype="multipart/form-data" id="prediction-form">
+              {% csrf_token %}
+              <input type="file" id="image-input" name="image" accept="image/*" onchange="previewImage(event)" required>
+              <div>
+                  <button type="submit">Predict</button>
+                  <button type="button" class="clear-btn" id="clear-button" onclick="clearForm()">Clear</button>
+              </div>
+          </form>
+  
+          <div class="image-preview" id="preview-wrapper" style="text-align: center;">
+              <img id="preview" src="" alt="Preview Image" style="display: none; margin: 20px auto;">
+          </div>
+          
+  
+          {% if class_name %}
+          <div class="result" id="prediction-results">
+              <h3>Prediction: {{ class_name }}</h3>
+              <h4>Confidence: {{ confidence }}%</h4>
+              <img src="{{ image_url }}" alt="Predicted Image" class="image-preview">
+          </div>
+          {% endif %}
+      </div>
+      
+
+      </div>
+      
+      <!-- Features Section -->
+      <div class="row mt-5">
+        <div class="col-12 text-center mb-4">
+          <h3>Why Choose Our Image Classifier</h3>
+        </div>
+        <div class="col-md-4">
+          <div class="feature-card text-center">
+            <i class="fas fa-bolt feature-icon"></i>
+            <h5>Instant Results</h5>
+            <p class="text-muted">Get predictions in seconds with our optimized AI model</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="feature-card text-center">
+            <i class="fas fa-brain feature-icon"></i>
+            <h5>Advanced AI</h5>
+            <p class="text-muted">Powered by state-of-the-art machine learning algorithms</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="feature-card text-center">
+            <i class="fas fa-shield-alt feature-icon"></i>
+            <h5>Privacy First</h5>
+            <p class="text-muted">Your uploads are processed securely and not stored long-term</p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer text-center py-4 mt-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 text-md-left mb-3 mb-md-0">
+            <h5>N-Digital</h5>
+            <p class="small">Empowering with AI technology</p>
+          </div>
+          <div class="col-md-4 mb-3 mb-md-0">
+            <h5>Links</h5>
+            <ul class="list-unstyled">
+              <li><a href="{% url 'index' %}" class="text-white">Home</a></li>
+              <li><a href="{% url 'about' %}" class="text-white">About</a></li>
+              <li><a href="#" class="text-white">Privacy Policy</a></li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <h5>Connect</h5>
+            <div class="social-icons">
+              <a href="#" class="text-white mx-2"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" class="text-white mx-2"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="text-white mx-2"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#" class="text-white mx-2"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+        </div>
+        <hr class="my-3 bg-light">
+        <p class="mb-0">&copy; {{ now|date:"Y" }} N-Digital. All rights reserved.</p>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.js' %}"></script>
+  <script src="{% static 'js/custom.js' %}"></script>
+
+  <!-- Enhanced Scripts -->
+  <script src="{% static 'js/scripts.js' %}"></script>
 </body>
+
 </html>
