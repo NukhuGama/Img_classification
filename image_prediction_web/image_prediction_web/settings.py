@@ -26,7 +26,13 @@ SECRET_KEY = 'django-insecure-xqokixs$ws(6*1n9jj*8!jwfq8l)g7+ormcj&hd27iu&ao6pz5
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = []
+# import os
+
+ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
+# ALLOWED_HOSTS = ['img-classification.onrender.com']
+
+
 
 
 # Application definition
