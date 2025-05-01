@@ -142,11 +142,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 
-AWS credentials (use environment variables in production)
-AWS_ACCESS_KEY_ID = 'AKIAVRUVRC5HSPFGGD6S'
-AWS_SECRET_ACCESS_KEY = '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'
-AWS_STORAGE_BUCKET_NAME = 'nukhuimgclassifier'
-AWS_S3_REGION_NAME = 'ap-southeast-2'  # Change as needed
-
-AWS_S3_CUSTOM_DOMAIN = f'nukhuimgclassifier.s3.ap-southeast-2.amazonaws.com'
-STATIC_URL = f'https://nukhuimgclassifier.s3.ap-southeast-2.amazonaws.com/'
+# AWS credentials (use environment variables in production)
+AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = config('AWS_STORAGE_BUCKET_NAME')
+AWS_S3_REGION_NAME = config('AWS_S3_REGION_NAME')
+AWS_S3_CUSTOM_DOMAIN = config('AWS_S3_CUSTOM_DOMAIN')
+STATIC_URL = config('STATIC_URL')
