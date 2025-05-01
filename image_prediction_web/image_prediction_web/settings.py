@@ -10,7 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 import os
-
+from decouple import config
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'storages',
     'predictor',
 ]
 
@@ -129,6 +130,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'predictor' 'static'),
 ]
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
@@ -137,3 +140,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+
+
+AWS credentials (use environment variables in production)
+AWS_ACCESS_KEY_ID = 'AKIAVRUVRC5HSPFGGD6S'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'nukhuimgclassifier'
+AWS_S3_REGION_NAME = 'ap-southeast-2'  # Change as needed
+
+AWS_S3_CUSTOM_DOMAIN = f'nukhuimgclassifier.s3.ap-southeast-2.amazonaws.com'
+STATIC_URL = f'https://nukhuimgclassifier.s3.ap-southeast-2.amazonaws.com/'
