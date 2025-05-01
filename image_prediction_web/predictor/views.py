@@ -9,6 +9,9 @@ import cv2 as cv
 # from django.conf import settings
 
 # Load the Keras model
+# MODEL_PATH = os.path.join(settings.BASE_DIR, 'ml_models', 'my_model.h5')
+# GDRIVE_URL = 'https://drive.google.com/uc?export=download&id=YOUR_FILE_ID'
+
 model = tf.keras.models.load_model(os.path.join(settings.BASE_DIR, 'ml_models/my_model.h5'))
 
 # Load labels
