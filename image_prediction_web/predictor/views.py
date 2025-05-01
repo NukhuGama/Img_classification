@@ -6,12 +6,13 @@ from django.core.files.storage import FileSystemStorage
 import os
 from django.conf import settings
 import cv2 as cv
+# from django.conf import settings
 
 # Load the Keras model
-model = tf.keras.models.load_model('ml_models/my_model.h5')
+model = tf.keras.models.load_model(os.path.join(settings.BASE_DIR, 'ml_models/my_model.h5'))
 
 # Load labels
-with open('ml_models/labels.txt', 'r') as f:
+with open( os.path.join(settings.BASE_DIR, 'ml_models/labels.txt')) as f:
     labels = [line.strip() for line in f.readlines()]
 
 def login(request):
@@ -23,7 +24,7 @@ def index(request):
     return render(request, 'index.html')
 
 def about(request):
-    return render(request, 'index11.html')
+    return render(request, 'index1.html')
 
 
 def preprocess_image(img_file):
