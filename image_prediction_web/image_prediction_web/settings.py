@@ -127,7 +127,7 @@ STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # Optional but helpful for development
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'predictor' 'static'),
+    os.path.join(BASE_DIR, 'predictor', 'static'),
 ]
 
 # Default primary key field type
