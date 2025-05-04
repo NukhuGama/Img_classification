@@ -29,8 +29,10 @@ DEBUG = True
 # ALLOWED_HOSTS = []
 # import os
 
-ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
+# ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
 # ALLOWED_HOSTS = ['img-classification.onrender.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'img-classification.onrender.com']
+
 
 
 
