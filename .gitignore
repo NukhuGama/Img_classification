@@ -1,4 +1,5 @@
 
 new_model/*
-image_prediction_web/ml_models/*
+# image_prediction_web/ml_models/*
 image_prediction_web/media/*
+.env
